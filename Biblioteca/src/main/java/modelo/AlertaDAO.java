@@ -13,7 +13,8 @@ public class AlertaDAO {
 
     public List<Alerta> obtenerAlertas() {
         List<Alerta> lista = new ArrayList<>();
-        String sql = "SELECT p.Nombre AS usuario, pr.libro, pr.fecha_vencimiento, "
+        String sql = "SELECT p.ID AS id_usuario, p.Nombre AS usuario, pr.libro, pr.fecha_prestamo, pr.fecha_vencimiento, "
+           + "DATEDIFF(pr.fecha_vencimiento, pr.fecha_prestamo) AS dias_prestamo, " 
            + "DATEDIFF(pr.fecha_vencimiento, CURDATE()) AS dias_restantes "
            + "FROM prestamo pr "
            + "INNER JOIN persona p ON pr.ID_persona = p.ID "
@@ -24,12 +25,15 @@ public class AlertaDAO {
              ResultSet rs = ps.executeQuery()) {
 
             while (rs.next()) {
+                int idUsuario = rs.getInt("id_usuario");
                 String usuario = rs.getString("usuario");
                 String libro = rs.getString("libro");
-                String fecha = rs.getString("fecha_vencimiento");
-                int dias = rs.getInt("dias_restantes");
+                String fechaPrestamo = rs.getString("fecha_prestamo");
+                String fechaVencimiento = rs.getString("fecha_vencimiento");
+                int diasPrestamo = rs.getInt("dias_prestamo");
+                int diasRestantes = rs.getInt("dias_restantes");
 
-                lista.add(new Alerta(usuario, libro, fecha, dias));
+                lista.add(new Alerta(idUsuario, usuario, libro, fechaPrestamo, fechaVencimiento, diasPrestamo, diasRestantes));
             }
 
         } catch (Exception e) {
