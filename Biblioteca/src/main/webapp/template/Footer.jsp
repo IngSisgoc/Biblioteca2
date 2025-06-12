@@ -22,13 +22,13 @@
             <div class="col-md-4">
                 <h5>Enlaces Rápidos</h5>
                 <ul class="list-unstyled">
-                    <li><a href="#" class="text-white">Preguntas Frecuentes</a></li>
-                    <li><a href="#" class="text-white">Términos y Condiciones</a></li>
-                    <li><a href="#" class="text-white">Política de Privacidad</a></li>
+                    <li><a href="${pageContext.request.contextPath}/template/EnlacesFooter/preguntasFrecuentes.jsp" class="text-white">Preguntas Frecuentes</a></li>
+                    <li><a href="${pageContext.request.contextPath}/template/EnlacesFooter/terminosCondiciones.jsp" class="text-white">Términos y Condiciones</a></li>
+                    <li><a href="${pageContext.request.contextPath}/template/EnlacesFooter/politicaPrivacidad.jsp" class="text-white">Política de Privacidad</a></li>
                 </ul>
             </div>
         </div>
         <hr class="bg-light">
-        <p class="mb-0">&copy; <%= java.time.Year.now() %>. Tu Empresa. Todos los derechos reservados.</p>
+        <p class="mb-0">&copy; <%= java.time.Year.now()%>. Tu Empresa. Todos los derechos reservados.</p>
     </div>
 </footer>

@@ -11,16 +11,16 @@
     </head>
     <body>
         <nav class="navbar navbar-dark bg-dark" style="color: white" >
-            <a href="Principal.jsp" class="navbar-toggler text-white"><span class="navbar-toggler-icon"></span>Home</a>
-            <a href="formUsuario.jsp" style="color: white">Mantenimiento</a>
+            <a href="${pageContext.request.contextPath}/Principal.jsp" class="navbar-toggler text-white"><span class="navbar-toggler-icon"></span>Home</a>
+            <a href="${pageContext.request.contextPath}/formUsuario.jsp" style="color: white">Mantenimiento</a>
             <!-- Menú desplegable de Vistas -->
             <div class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle text-white" href="#" id="vistasDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Vistas
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="listarUsuarios.jsp">Listar Usuarios</a></li>
-                    <li><a class="dropdown-item" href="listarLibro.jsp">Listar Libros</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listarUsuarios.jsp">Listar Usuarios</a></li>
+                    <li><a class="dropdown-item" href="${pageContext.request.contextPath}/listarLibro.jsp">Listar Libros</a></li>
                 </ul>
             </div>
             <%-- Reemplazamos el texto "Alertas" por un ícono de campana con badge --%>
