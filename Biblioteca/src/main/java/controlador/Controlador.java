@@ -13,6 +13,8 @@ import modelo.Persona;
 import modelo.PersonaDAO;
 import modelo.Prestamo;
 import modelo.PrestamoDAO;
+import modelo.Usuario;
+import modelo.UsuarioDAO;
 
 public class Controlador extends HttpServlet {
 
@@ -42,6 +44,7 @@ public class Controlador extends HttpServlet {
             if (r == 1) {
                 request.getSession().setAttribute("nom", nom);
                 request.getSession().setAttribute("correo", correo);
+                request.getSession().setAttribute("rol", p.getRol());
                 request.getRequestDispatcher("Principal.jsp").forward(request, response);
             } else {
                 System.out.println("No se encontró el usuario. Redirigiendo a index.jsp");
@@ -62,6 +65,56 @@ public class Controlador extends HttpServlet {
 
             request.setAttribute("alertas", alertas);
             request.getRequestDispatcher("alertas.jsp").forward(request, response);
+        } 
+        //SE AGREGA USUARIO
+        else if (accion.equals("listarUsuario")) {
+            UsuarioDAO daoUsuario = new UsuarioDAO();
+            List<Usuario> lista = daoUsuario.listar();
+            request.setAttribute("usuarios", lista);
+            request.getRequestDispatcher("vistas/listarUsuario.jsp").forward(request, response);
+
+        } else if (accion.equals("agregarUsuario")) {
+            String nom = request.getParameter("txtNom");
+            String correo = request.getParameter("txtCorreo");
+            String rol = request.getParameter("txtRol");
+
+            Usuario u = new Usuario();
+            u.setNom(nom);
+            u.setCorreo(correo);
+            u.setRol(rol);
+
+            UsuarioDAO daoUsuario = new UsuarioDAO();
+            daoUsuario.agregar(u);
+            response.sendRedirect("Controlador?accion=listarUsuario");
+
+        } else if (accion.equals("editarUsuario")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            UsuarioDAO daoUsuario = new UsuarioDAO();
+            Usuario u = daoUsuario.listarPorId(id);
+            request.setAttribute("usuario", u);
+            request.getRequestDispatcher("vistas/formUsuario.jsp").forward(request, response);
+
+        } else if (accion.equals("actualizarUsuario")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String nom = request.getParameter("txtNom");
+            String correo = request.getParameter("txtCorreo");
+            String rol = request.getParameter("txtRol");
+
+            Usuario u = new Usuario();
+            u.setId(id);
+            u.setNom(nom);
+            u.setCorreo(correo);
+            u.setRol(rol);
+
+            UsuarioDAO daoUsuario = new UsuarioDAO();
+            daoUsuario.actualizar(u);
+            response.sendRedirect("Controlador?accion=listarUsuario");
+
+        } else if (accion.equals("eliminarUsuario")) {
+            int id = Integer.parseInt(request.getParameter("id"));
+            UsuarioDAO daoUsuario = new UsuarioDAO();
+            daoUsuario.eliminar(id);
+            response.sendRedirect("Controlador?accion=listarUsuario");
         }
 
         try (PrintWriter out = response.getWriter()) {

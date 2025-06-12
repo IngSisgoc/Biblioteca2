@@ -7,8 +7,24 @@ public class Persona {
     int id;
     String nom;
     String correo;
+    String rol;
 
     public Persona() {
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Persona(int id, String nom, String correo, String rol) {
+        this.id = id;
+        this.nom = nom;
+        this.correo = correo;
+        this.rol = rol;
     }
 
     public Persona(int id, String nom, String correo) {

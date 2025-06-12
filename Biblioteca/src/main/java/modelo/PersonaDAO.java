@@ -3,6 +3,8 @@ package modelo;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PersonaDAO implements Validar {
 
@@ -26,6 +28,7 @@ public class PersonaDAO implements Validar {
                 r=r+1;
                 per.setNom(rs.getString("Nombre"));
                 per.setCorreo(rs.getString("Correo"));
+                per.setRol(rs.getString("rol"));
             }
             if (r==1) {
                 return 1;
@@ -36,5 +39,29 @@ public class PersonaDAO implements Validar {
             return 0;
         }
     }
+    
+    public List<Persona> listar() {
+    List<Persona> lista = new ArrayList<>();
+    String sql = "SELECT * FROM persona";
+
+    try {
+        con = cn.getConnection();
+        ps = con.prepareStatement(sql);
+        rs = ps.executeQuery();
+        while (rs.next()) {
+            Persona p = new Persona();
+            p.setId(rs.getInt("Id")); // Asegúrate de que exista la columna Id en tu tabla
+            p.setNom(rs.getString("Nombre"));
+            p.setCorreo(rs.getString("Correo"));
+            p.setRol(rs.getString("rol"));
+            lista.add(p);
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+
+    return lista;
+}
+    
 
 }
