@@ -5,7 +5,7 @@
 
 <div class="container mt-4">
     <h2>Lista de Usuarios</h2>
-    <a href="Controlador?accion=addUsuario" class="btn btn-primary mb-3">Nuevo Usuario</a>
+    <a href="formUsuario.jsp" class="btn btn-primary mb-3">Nuevo Usuario</a>
     <table class="table table-bordered table-hover">
         <thead class="table-dark">
             <tr>

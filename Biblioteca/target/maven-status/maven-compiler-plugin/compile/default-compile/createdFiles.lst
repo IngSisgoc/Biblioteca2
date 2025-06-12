@@ -1,5 +1,6 @@
 modelo\AlertaDAO.class
 modelo\PrestamoDAO.class
+controlador\ReporteServlet.class
 modelo\Libro.class
 modelo\Prestamo.class
 modelo\UsuarioDAO.class
@@ -10,6 +11,7 @@ modelo\Persona.class
 com\mycompany\biblioteca\JakartaRestConfiguration.class
 com\mycompany\biblioteca\resources\JakartaEE8Resource.class
 modelo\PersonaDAO.class
+controlador\ActualizarRolServlet.class
 modelo\Conexion.class
 controlador\Controlador.class
 modelo\Alerta.class

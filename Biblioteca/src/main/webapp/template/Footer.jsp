@@ -15,8 +15,8 @@
             <div class="col-md-4">
                 <h5>Nuestra Ubicación</h5>
                 <p>
-                    Ate, Lima, Perú<br>
-                    Av. Los Frutales 123
+                    Chorrillos, Lima, Perú<br>
+                    Av. Ingenieros 123
                 </p>
             </div>
             <div class="col-md-4">
