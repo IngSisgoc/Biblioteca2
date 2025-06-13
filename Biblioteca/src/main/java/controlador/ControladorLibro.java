@@ -19,7 +19,7 @@ public class ControladorLibro extends HttpServlet {
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
-        
+
         if (accion == null) {
             response.sendRedirect("listarLibro.jsp");
             return;
@@ -65,8 +65,8 @@ public class ControladorLibro extends HttpServlet {
                 libro.setAnioPublicacion(java.sql.Date.valueOf(request.getParameter("anioPublicacion")));
                 libro.setCantidad(Integer.parseInt(request.getParameter("cantidad")));
                 libro.setCategoria(request.getParameter("categoria"));
-                libro.setFechaRegistro(java.sql.Date.valueOf(request.getParameter("fechaRegistro")));
                 libro.setUsuarioRegister(Integer.parseInt(request.getParameter("usuarioRegister")));
+                libro.setFechaRegistro(new java.sql.Date(System.currentTimeMillis())); // <-- esta línea evita el error
                 dao.agregar(libro);
                 response.sendRedirect("listarLibro.jsp");
                 break;
@@ -92,4 +92,3 @@ public class ControladorLibro extends HttpServlet {
         }
     }
 }
-

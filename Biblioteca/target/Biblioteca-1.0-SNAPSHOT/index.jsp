@@ -12,7 +12,7 @@
             <form action="Controlador">
                 <div class="form-group mt-1 text-center">
                     <img src="img/usuario.png" height="80" width="80"/>
-                    <p><strong>Bienvenidos a la biblioteca digital</strong></p>
+                    <p><strong>Bienvenidos a la Biblioteca Digital</strong></p>
                 </div>
                 <div class="form-group mt-1">
                     <label>Nombres:</label>
